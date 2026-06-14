@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Menu de La Guinguette">
+  <title>Camping de Sagnat — Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="loading-screen">
+    <div class="ls-trees ls-trees-left">
+      <svg viewBox="0 0 220 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax meet">
+        <rect x="17" y="460" width="7" height="160" rx="3" fill="#3a6a3a"/>
+        <ellipse cx="20" cy="430" rx="17" ry="30" fill="#3a6a3a"/>
+        <ellipse cx="11" cy="448" rx="12" ry="20" fill="#375f37"/>
+        <ellipse cx="29" cy="448" rx="12" ry="20" fill="#375f37"/>
+        <rect x="79" y="395" width="9" height="205" rx="3" fill="#4a7a4a"/>
+        <ellipse cx="83" cy="360" rx="25" ry="43" fill="#4a7a4a"/>
+        <ellipse cx="69" cy="382" rx="19" ry="31" fill="#508050"/>
+        <ellipse cx="97" cy="380" rx="19" ry="31" fill="#508050"/>
+        <ellipse cx="83" cy="398" rx="14" ry="21" fill="#5a8a5a"/>
+        <rect x="160" y="315" width="13" height="285" rx="4" fill="#3a6a3a"/>
+        <ellipse cx="166" cy="268" rx="34" ry="57" fill="#3a6a3a"/>
+        <ellipse cx="148" cy="298" rx="26" ry="43" fill="#467a46"/>
+        <ellipse cx="184" cy="296" rx="26" ry="43" fill="#467a46"/>
+        <ellipse cx="166" cy="320" rx="19" ry="29" fill="#508050"/>
+        <ellipse cx="153" cy="336" rx="14" ry="21" fill="#5a8a5a"/>
+        <ellipse cx="179" cy="334" rx="14" ry="21" fill="#5a8a5a"/>
+        <rect x="0" y="595" width="220" height="10" fill="#3a6a3a"/>
+        <ellipse cx="30"  cy="594" rx="28" ry="6" fill="#4a7a4a"/>
+        <ellipse cx="110" cy="594" rx="38" ry="7" fill="#4a7a4a"/>
+        <ellipse cx="185" cy="594" rx="30" ry="6" fill="#3a6a3a"/>
+      </svg>
+    </div>
+    <div class="ls-trees ls-trees-right">
+      <svg viewBox="0 0 220 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet" style="transform:scaleX(-1)">
+        <rect x="17" y="460" width="7" height="160" rx="3" fill="#3a6a3a"/>
+        <ellipse cx="20" cy="430" rx="17" ry="30" fill="#3a6a3a"/>
+        <ellipse cx="11" cy="448" rx="12" ry="20" fill="#375f37"/>
+        <ellipse cx="29" cy="448" rx="12" ry="20" fill="#375f37"/>
+        <rect x="79" y="395" width="9" height="205" rx="3" fill="#4a7a4a"/>
+        <ellipse cx="83" cy="360" rx="25" ry="43" fill="#4a7a4a"/>
+        <ellipse cx="69" cy="382" rx="19" ry="31" fill="#508050"/>
+        <ellipse cx="97" cy="380" rx="19" ry="31" fill="#508050"/>
+        <ellipse cx="83" cy="398" rx="14" ry="21" fill="#5a8a5a"/>
+        <rect x="160" y="315" width="13" height="285" rx="4" fill="#3a6a3a"/>
+        <ellipse cx="166" cy="268" rx="34" ry="57" fill="#3a6a3a"/>
+        <ellipse cx="148" cy="298" rx="26" ry="43" fill="#467a46"/>
+        <ellipse cx="184" cy="296" rx="26" ry="43" fill="#467a46"/>
+        <ellipse cx="166" cy="320" rx="19" ry="29" fill="#508050"/>
+        <ellipse cx="153" cy="336" rx="14" ry="21" fill="#5a8a5a"/>
+        <ellipse cx="179" cy="334" rx="14" ry="21" fill="#5a8a5a"/>
+        <rect x="0" y="595" width="220" height="10" fill="#3a6a3a"/>
+        <ellipse cx="30"  cy="594" rx="28" ry="6" fill="#4a7a4a"/>
+        <ellipse cx="110" cy="594" rx="38" ry="7" fill="#4a7a4a"/>
+        <ellipse cx="185" cy="594" rx="30" ry="6" fill="#3a6a3a"/>
+      </svg>
+    </div>
+    <div class="ls-inner">
+      <div class="ls-logo" id="ls-logo">🌿</div>
+      <div class="ls-name"  id="ls-name">Chargement…</div>
+      <div class="ls-track"><div class="ls-bar"></div></div>
+    </div>
+  </div>
+
+  <div id="edit-badge" class="hidden">
+    <span>✎ Mode Édition actif</span>
+    <button onclick="App.exitEditMode()">Quitter</button>
+  </div>
+
+  <div id="ep-overlay" class="hidden" onclick="App.exitEditMode()"></div>
+  <aside id="ep" class="hidden">
+    <div class="ep-header">
+      <h3>Édition</h3>
+      <button class="ep-x" onclick="App.exitEditMode()">✕</button>
+    </div>
+    <nav class="ep-tabs">
+      <button class="ep-tab active" data-tab="info"  onclick="epTab('info')">Infos</button>
+      <button class="ep-tab"        data-tab="menu"  onclick="epTab('menu')">Menu</button>
+      <button class="ep-tab"        data-tab="bar"   onclick="epTab('bar')">Bar</button>
+      <button class="ep-tab"        data-tab="hours" onclick="epTab('hours')">Horaires</button>
+    </nav>
+    <div class="ep-body" id="ep-body"></div>
+  </aside>
+
+  <nav id="nav">
+    <div class="nav-brand">
+      <a class="nav-back" href="../" aria-label="Retour à l'accueil">←</a>
+      <span id="nav-logo">🌿</span>
+      <span id="nav-name">Camping de Sagnat</span>
+    </div>
+    <div class="nav-right">
+      <button id="nav-burger" aria-label="Navigation" aria-expanded="false" onclick="App.toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="nav-dd" role="menu" aria-hidden="true">
+        <a href="#menu-section" role="menuitem" onclick="App.closeNav()">Menu</a>
+        <a href="#bar-section"  role="menuitem" onclick="App.closeNav()">Bar</a>
+      </div>
+    </div>
+  </nav>
+  <div id="nav-mask" onclick="App.closeNav()"></div>
+
+  <main>
+    <section id="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Restaurant de camping</p>
+        <h1 id="hero-name">Camping de Sagnat</h1>
+        <p class="hero-tagline" id="hero-tagline"></p>
+      </div>
+    </section>
+
+    <div id="status-bar">
+      <span id="status-dot" class="dot dot-unknown"></span>
+      <span id="status-text">…</span>
+    </div>
+
+    <section class="page-section" id="hours-section">
+      <div class="section-hd">
+        <div class="section-rule"></div>
+        <h2>Horaires d'ouverture</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div id="hours-table"></div>
+    </section>
+
+    <section class="page-section" id="menu-section">
+      <div class="section-hd">
+        <div class="section-rule"></div>
+        <h2>Menu</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="sub-section" id="sub-entree"><div class="sub-hd">Entrées</div><div class="items-grid" id="grid-entree"></div></div>
+      <div class="sub-section" id="sub-plat"><div class="sub-hd">Plats</div><div class="items-grid" id="grid-plat"></div></div>
+      <div class="sub-section" id="sub-dessert"><div class="sub-hd">Desserts</div><div class="items-grid" id="grid-dessert"></div></div>
+    </section>
+
+    <section class="page-section" id="bar-section">
+      <div class="section-hd">
+        <div class="section-rule"></div>
+        <h2>Bar</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="sub-section" id="sub-cocktail"><div class="sub-hd">Cocktails</div><div class="items-grid" id="grid-cocktail"></div></div>
+      <div class="sub-section" id="sub-vin"><div class="sub-hd">Vins &amp; Rosés</div><div class="items-grid" id="grid-vin"></div></div>
+      <div class="sub-section" id="sub-spiritueux"><div class="sub-hd">Bières &amp; Pression</div><div class="items-grid" id="grid-spiritueux"></div></div>
+      <div class="sub-section" id="sub-soft"><div class="sub-hd">Softs &amp; Jus</div><div class="items-grid" id="grid-soft"></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo" id="footer-logo">🌿</div>
+    <div class="footer-name" id="footer-name">Camping de Sagnat</div>
+    <div class="footer-hint">Tapez <kbd>c</kbd><kbd>h</kbd><kbd>e</kbd><kbd>f</kbd> pour le mode édition</div>
+  </footer>
+
+  <div id="toasts"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="../app.js"></script>
+</body>
+</html>
