@@ -22,8 +22,8 @@ const FIREBASE_CONFIG = {
 
 // ── Cloudinary ───────────────────────────────────────────────────
 const CLOUDINARY_CONFIG = {
-  cloudName:    "YOUR_CLOUD_NAME",
-  uploadPreset: "YOUR_UPLOAD_PRESET",
+  cloudName:    "dasvupnzt",
+  uploadPreset: "menu-restau",
 };
 
 // ── Séquence secrète ─────────────────────────────────────────────
