@@ -8,12 +8,17 @@ const SITE_ID = 'camping';
 // ── Firebase ─────────────────────────────────────────────────────
 // Même projet Firebase que le bistrot — données séparées par SITE_ID
 const FIREBASE_CONFIG = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_PROJECT.firebaseapp.com",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId:             "YOUR_APP_ID",
+  apiKey: "AIzaSyDGR9aT2Mt8JAAUbyQrLQJ1y3-z065yfew",
+
+  authDomain: "items-menu.firebaseapp.com",
+
+  projectId: "items-menu",
+
+  storageBucket: "items-menu.firebasestorage.app",
+
+  messagingSenderId: "367337852155",
+
+  appId: "1:367337852155:web:adc610de725b5c8eb2b45e",
 };
 
 // ── Cloudinary ───────────────────────────────────────────────────
