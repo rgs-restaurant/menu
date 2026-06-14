@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Établissements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+  <main class="landing">
+
+    <header class="landing-hd">
+      <p class="landing-eyebrow">Bienvenue</p>
+      <h1 class="landing-title">Choisissez votre établissement</h1>
+    </header>
+
+    <div class="cards">
+
+      <!-- ── BISTROT ─────────────────────────── -->
+      <a class="card card-dark" href="bistrot/" aria-label="Accéder au Rive Gauche">
+        <div class="card-bg"></div>
+        <div class="card-inner">
+          <div class="card-logo" id="landing-logo-bistrot">⚜</div>
+          <div class="card-name" id="landing-name-bistrot">Le Rive Gauche</div>
+          <div class="card-tagline" id="landing-tag-bistrot">Grillée et Savoureuse&nbsp;!</div>
+          <div class="card-cta">
+            <span>Voir la carte</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- ── CAMPING ─────────────────────────── -->
+      <a class="card card-light" href="camping/" aria-label="Accéder au Camping de Sagnat">
+        <div class="card-bg"></div>
+        <div class="card-inner">
+          <div class="card-logo" id="landing-logo-camping">🌿</div>
+          <div class="card-name" id="landing-name-camping">Camping de Sagnat</div>
+          <div class="card-tagline" id="landing-tag-camping"></div>
+          <div class="card-cta">
+            <span>Voir la carte</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <script>
+  /* Charge les logos/noms depuis localStorage si déjà visités */
+  (function () {
+    function isUrl(s) { return s && (s.startsWith('http') || s.startsWith('data:') || s.startsWith('/')); }
+    function setLogo(el, logo, name) {
+      if (!el || !logo) return;
+      if (isUrl(logo)) {
+        el.innerHTML = '<img src="' + logo + '" alt="' + name + '" class="card-logo-img">';
+      } else {
+        el.textContent = logo;
+      }
+    }
+    function apply(siteId, logoId, nameId, tagId) {
+      try {
+        var raw = localStorage.getItem(siteId + '_restaurant_info');
+        if (!raw) return;
+        var data = JSON.parse(raw);
+        setLogo(document.getElementById(logoId), data.logo, data.name);
+        var nameEl = document.getElementById(nameId);
+        if (nameEl && data.name) nameEl.textContent = data.name;
+        var tagEl  = document.getElementById(tagId);
+        if (tagEl  && data.tagline !== undefined) tagEl.textContent = data.tagline;
+      } catch (e) {}
+    }
+    apply('bistrot', 'landing-logo-bistrot', 'landing-name-bistrot', 'landing-tag-bistrot');
+    apply('camping', 'landing-logo-camping', 'landing-name-camping', 'landing-tag-camping');
+  })();
+  </script>
+</body>
+</html>
