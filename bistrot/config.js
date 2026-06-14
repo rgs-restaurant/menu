@@ -31,7 +31,7 @@ const EDIT_SEQUENCE = ['c', 'h', 'e', 'f'];
 
 // ── Emails autorisés (Google Auth) ───────────────────────────────
 const ALLOWED_EMAILS = [
-  'votre@gmail.com',
+  'md.fedala@gmail.com',
 ];
 
 // ── Données par défaut ───────────────────────────────────────────
