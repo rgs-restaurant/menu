@@ -25,12 +25,13 @@ let keyTmr  = null;
 // Sections par catégorie
 const SECTIONS = {
   menu: ['entree', 'plat', 'dessert'],
-  bar:  ['cocktail', 'vin', 'spiritueux', 'soft'],
+  bar:  ['cocktail', 'vin', 'spiritueux', 'soft', 'chaud', 'snack'],
 };
 const SEC_LABELS = {
   entree: 'Entrées', plat: 'Plats', dessert: 'Desserts',
   cocktail: 'Cocktails', vin: 'Vins & Champagnes',
   spiritueux: 'Spiritueux', soft: 'Softs & Eaux',
+  chaud: 'Boissons Chaudes', snack: 'Snacks',
 };
 const DAY_ORDER = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
