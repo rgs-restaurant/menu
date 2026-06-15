@@ -71,9 +71,13 @@
     }
     function apply(siteId, logoId, nameId, tagId) {
       try {
-        var raw = localStorage.getItem(siteId + '_restaurant_info');
-        if (!raw) return;
-        var data = JSON.parse(raw);
+var raw = localStorage.getItem(siteId + '_restaurant_info');
+var data = raw ? JSON.parse(raw) : null;
+if (!data) {
+  var fc = localStorage.getItem('fc_' + siteId + '_info');
+  if (fc) data = JSON.parse(fc).data || null;
+}
+if (!data) return;
         setLogo(document.getElementById(logoId), data.logo, data.name);
         var nameEl = document.getElementById(nameId);
         if (nameEl && data.name) nameEl.textContent = data.name;
